@@ -1,8 +1,8 @@
 CC := g++
 FLAGS := -o
 
-SRC := "num3-master.cpp"
-CSRC := "num3-master.exe"
+SRC := "num3.cpp"
+CSRC := "num3.exe"
 
 run:
 	$(CC) $(SRC) $(FLAGS) $(CSRC)

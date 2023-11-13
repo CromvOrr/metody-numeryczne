@@ -1,13 +1,13 @@
 CC := g++
 FLAGS := -o
 
-SORT := "num1-sort-master.cpp"
-CSORT := "num1-sort-master.o"
+SORT := "num1-sort.cpp"
+CSORT := "num1-sort.o"
 
-SRC_A := "num1a-master.cpp"
-CSRC_A := "num1a-master.o"
-SRC_B := "num1b-master.cpp"
-CSRC_B := "num1b-master.o"
+SRC_A := "num1a.cpp"
+CSRC_A := "num1a.o"
+SRC_B := "num1b.cpp"
+CSRC_B := "num1b.o"
 
 FLOAT_FILE_A := "data_float_a.dat"
 DOUBLE_FILE_A := "data_double_a.dat"

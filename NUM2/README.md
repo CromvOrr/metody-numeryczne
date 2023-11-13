@@ -3,7 +3,7 @@
 
 Działanie pliku:
 
-    Plik "num2-master.cpp" rozwiązuje równanie macierzowe zadane w zadaniu numerycznym NUM2.
+    Plik "num2.cpp" rozwiązuje równanie macierzowe zadane w zadaniu numerycznym NUM2.
 
     Program używa pakietu algebry komputerowej "Eigen".
 
@@ -13,4 +13,4 @@ Uruchamianie:
     którą trzeba zainstalować osobno i podpiąć pod kompilator.
 
     Program pisałem i uruchamiałem w programie VS Code, z powodów wymienionych wyżej
-    zrobiłem zrzut ekranu wyników - dostępne w pliku "results-master.jpg".
+    zrobiłem zrzut ekranu wyników - dostępne w pliku "results.jpg".

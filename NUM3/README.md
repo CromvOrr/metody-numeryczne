@@ -3,7 +3,7 @@
 
 Działanie pliku:
 
-    Plik "num3-master.cpp" rozwiązuje równanie zadane w zadaniu numerycznym NUM3 oraz znajduje wektor y dla N = 124.
+    Plik "num3.cpp" rozwiązuje równanie zadane w zadaniu numerycznym NUM3 oraz znajduje wektor y dla N = 124.
 
     Następnie prowadzona jest symulacja, która sprawdza jak zmienia się czas działania programu względem zmiennej N.
     Dane wyprowadzane są do pliku "data.dat".
