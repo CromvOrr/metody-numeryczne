@@ -7,7 +7,7 @@ CSORT := "num1-sort.o"
 SRC_A := "num1a.cpp"
 CSRC_A := "num1a.o"
 SRC_B := "num1b.cpp"
-CSRC_B := "num1b.o"
+CSRC_B := "num1b.exe"
 
 FLOAT_FILE_A := "data_float_a.dat"
 DOUBLE_FILE_A := "data_double_a.dat"
@@ -31,4 +31,4 @@ run:
 	.\$(CSORT) $(DOUBLE_FILE_B) $(DOUBLE_SORTED_FILE_B)
 
 clean:
-	del *.dat *.o
+	del *.dat *.exe
