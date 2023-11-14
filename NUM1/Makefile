@@ -21,14 +21,14 @@ DOUBLE_SORTED_FILE_B := "data_double_sorted_b.dat"
 
 run:
 	$(CC) $(SRC_A) $(FLAGS) $(CSRC_A)
-	./$(CSRC_A)
+	.\$(CSRC_A)
 	$(CC) $(SRC_B) $(FLAGS) $(CSRC_B)
-	./$(CSRC_B)
+	.\$(CSRC_B)
 	$(CC) $(SORT) $(FLAGS) $(CSORT)
-	./$(CSORT) $(FLOAT_FILE_A) $(FLOAT_SORTED_FILE_A)
-	./$(CSORT) $(DOUBLE_FILE_A) $(DOUBLE_SORTED_FILE_A)
-	./$(CSORT) $(FLOAT_FILE_B) $(FLOAT_SORTED_FILE_B)
-	./$(CSORT) $(DOUBLE_FILE_B) $(DOUBLE_SORTED_FILE_B)
+	.\$(CSORT) $(FLOAT_FILE_A) $(FLOAT_SORTED_FILE_A)
+	.\$(CSORT) $(DOUBLE_FILE_A) $(DOUBLE_SORTED_FILE_A)
+	.\$(CSORT) $(FLOAT_FILE_B) $(FLOAT_SORTED_FILE_B)
+	.\$(CSORT) $(DOUBLE_FILE_B) $(DOUBLE_SORTED_FILE_B)
 
 clean:
-	rm *.dat *.o
+	del *.dat *.o
