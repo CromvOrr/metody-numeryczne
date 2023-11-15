@@ -1,5 +1,5 @@
 CC := g++
-FLAGS := -o
+FLAGS := -I "lib" -o
 
 SRC := "num3.cpp"
 CSRC := "num3.exe"

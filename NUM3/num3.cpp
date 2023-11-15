@@ -2,8 +2,10 @@
 #include <vector>
 #include <chrono>
 #include <fstream>
+#include <Eigen/Dense>
 
 using namespace std;
+using namespace Eigen;
 
 void setUp(int size, vector<vector<double>> &array, vector<double> &x, vector<double> &y)
 {
@@ -56,12 +58,17 @@ void operations(int size, vector<vector<double>> &array, vector<double> &x, vect
         x[i] = x[i] - array[0][i] * x[i - 1];
     }
 
-    y[size - 1] = x[size - 1] / array[1][size - 1];
-    y[size - 2] = (x[size - 2] - array[2][size - 2] * x[size - 1]) / array[1][size - 2];
+    x[size - 1] = x[size - 1] / array[1][size - 1];
+    x[size - 2] = (x[size - 2] - array[2][size - 2] * x[size - 1]) / array[1][size - 2];
 
     for (int i = size - 3; i >= 0; i--)
     {
-        y[i] = (x[i] - array[2][i] * x[i + 1] - array[3][i] * x[i + 2]) / array[1][i];
+        x[i] = (x[i] - array[2][i] * x[i + 1] - array[3][i] * x[i + 2]) / array[1][i];
+    }
+
+    for (int i = 0; i < size; i++)
+    {
+        y[i] = x[i];
     }
 }
 
@@ -73,6 +80,35 @@ double calcuateDet(int size, vector<vector<double>> &array, double det = 1)
     }
 
     return det;
+}
+
+void check(int size)
+{
+    MatrixXd A = MatrixXd::Zero(size, size);
+    A.diagonal() = VectorXd::Constant(size, 1.2);
+    VectorXd x = VectorXd::Constant(size, 1.0);
+
+    for (int i = 0; i < size; i++)
+    {
+        x(i) = i + 1;
+        if (i < size - 1)
+        {
+            A(i, i + 1) = 0.1 / static_cast<double>(i + 1);
+        }
+        if (i > 0)
+        {
+            A(i, i - 1) = 0.2;
+        }
+        if (i < size - 2)
+        {
+            A(i, i + 2) = 0.15 / static_cast<double>(((i + 1) * (i + 1)));
+        }
+    }
+
+    VectorXd y = A.fullPivLu().solve(x);
+    cout << "[Eigen] |A| = " << A.determinant() << "\n";
+    cout << "[Eigen] y =\n";
+    cout << y << endl;
 }
 
 int main()
@@ -87,15 +123,15 @@ int main()
     auto end = chrono::high_resolution_clock::now();
     auto timePassed = chrono::duration_cast<chrono::microseconds>(end - start).count() / 1000.0;
 
-    cout << "|A| =\t\t\t" << calcuateDet(N, A) << "\n";
-    cout << "Runtime for N = 124:\t" << timePassed << "ms\n\n";
-
-    cout << "y =    [" << y[0] << "\n";
-    for (int i = 1; i < N - 1; i++)
+    cout << "Runtime for N = 124:\t" << timePassed << "ms\n";
+    cout << "\n|A| = " << calcuateDet(N, A) << "\n";
+    cout << "y =\n";
+    for (int i = 0; i < N; i++)
     {
-        cout << "\t" << y[i] << "\n";
+        cout << y[i] << "\n";
     }
-    cout << "\t" << y[N - 1] << "]\n";
+    cout << endl;
+    check(N);
 
     //* -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
 
@@ -120,6 +156,5 @@ int main()
     }
 
     data.close();
-
     return 0;
 }
