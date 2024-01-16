@@ -1,0 +1,1 @@
+<img src="../TASKS/num6.png">
